@@ -3,6 +3,7 @@ package ua.chernonog.springcourse.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.chernonog.springcourse.dao.PersonDAO;
 
@@ -16,13 +17,16 @@ public class PersonController {
     }
 
     @GetMapping()
-    public String helloPage(){
-        return "people/hello";
+    public String showPeople(Model model){
+        model.addAttribute("people",personDAO.showPeople());
+        return "/people/hello";
     }
-    @GetMapping("/test")
-    public String getPerson(Model model){
-        model.addAttribute("person",personDAO.getPerson());
-        return "/people/test";
+
+    @GetMapping("/{id}")
+    public String getPerson(@PathVariable("id") int id, Model model){
+        model.addAttribute("person",personDAO.getPerson(id));
+        return "/people/person";
     }
+
 
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.chernonog.springcourse.models.Person;
 
+import java.util.List;
+
 @Component
 public class PersonDAO {
 
@@ -17,10 +19,23 @@ public class PersonDAO {
         this.sessionFactory = sessionFactory;
     }
 
+
     @Transactional
-    public Person getPerson() {
+    public List<Person> showPeople() {
         Session session = sessionFactory.getCurrentSession();
-        Person person = session.get(Person.class, 3);
+        List<Person> people = session.createQuery("Select p from Person p", Person.class).getResultList();
+
+        return people;
+
+    }
+
+    @Transactional
+    public Person getPerson(int id) {
+       Session session = sessionFactory.getCurrentSession();
+
+        Person person = session.get(Person.class, id);
+
         return person;
+
     }
 }
