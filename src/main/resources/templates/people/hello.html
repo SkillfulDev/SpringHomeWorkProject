@@ -7,7 +7,11 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" href="">
 </head>
 <body>
-<p class="some">HELLO</p>
+<div class="title">
+    <p>Список всех людей</p>
+</div>
+
+
 <div class="border" th:each="person : ${people}" th:object="${person}">
     <a class="link" th:href="@{/people/{id} (id=${person.getId()})}"
        th:text="${person.getName()}+', '+${person.getAge()}+', '+${person.getEmail()}"></a>
