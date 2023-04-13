@@ -1,10 +1,9 @@
-.link{
-    color: green;
+body {
+  padding: 30px;
 }
-.new{
-    color: red;
+
+.new {
+  border: 1px solid blue;
 }
-.some{
-    font-size: 100px;
-    color: red;
-}
+
+/*# sourceMappingURL=main.css.map */

@@ -19,7 +19,7 @@ public class PersonController {
     @GetMapping()
     public String showPeople(Model model){
         model.addAttribute("people",personDAO.showPeople());
-        return "/people/hello";
+        return "people/hello";
     }
 
     @GetMapping("/{id}")

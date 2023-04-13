@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Список людей</title>
-    <link rel="stylesheet" type="text/css" media="all" href="/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="">
 </head>
 <body>
 <p class="some">HELLO</p>
-<div th:each="person : ${people}" th:object="${person}">
+<div class="border" th:each="person : ${people}" th:object="${person}">
     <a class="link" th:href="@{/people/{id} (id=${person.getId()})}"
        th:text="${person.getName()}+', '+${person.getAge()}+', '+${person.getEmail()}"></a>
-    <p class="new">Текст</p>
+    <span class="new">Текст</span>
 </div>
 </body>
 </html>

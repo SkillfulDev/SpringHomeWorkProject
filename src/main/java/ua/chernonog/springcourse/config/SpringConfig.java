@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring6.SpringTemplateEngine;
@@ -31,11 +32,21 @@ import java.util.Properties;
 @PropertySource("classpath:hibernate.properties")
 //Эта аннотация нужна для того что-бы автоматически Спринг открывал и закрывал транзакции
 @EnableTransactionManagement
-public class SpringConfig implements WebMvcConfigurer {
+public class SpringConfig  implements WebMvcConfigurer   {
 
     private final ApplicationContext applicationContext;
     //С помощью этого класса мы сможем в нашем Java классе использовать конфигурации из файла Hibernate
     private final Environment env;
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String[] STATIC_RESOURCE = {"/","classpath:/","classpath:/META-INF/resources/", "classpath:/META-INF/resources/webjars/",
+                "classpath:/resources/", "classpath:/static/", "classpath:/public/"};
+
+        if (!registry.hasMappingForPattern("/**")) {
+            registry.addResourceHandler("/**").addResourceLocations(STATIC_RESOURCE);
+        }
+    }
 
     @Autowired
     public SpringConfig(ApplicationContext applicationContext, Environment environment) {
@@ -48,7 +59,7 @@ public class SpringConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("classpath:/templates");
+        templateResolver.setPrefix("classpath:/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;

@@ -28,7 +28,7 @@ public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotation
         return new String[]{"/"};
     }
 
-    //    @Override
+//        @Override
 //    public void onStartup(ServletContext aServletContext) throws ServletException {
 //        super.onStartup(aServletContext);
 //        registerHiddenFieldFilter(aServletContext);
