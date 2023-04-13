@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Список людей</title>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/main.css" th:href="@{/css/main.css}" />
+</head>
+<body>
+<p class="some">HELLO</p>
+<div th:each="person : ${people}" th:object="${person}">
+    <a class="link" th:href="@{/people/{id} (id=${person.getId()})}"
+       th:text="${person.getName()}+', '+${person.getAge()}+', '+${person.getEmail()}"></a>
+    <p class="new">Текст</p>
+</div>
+</body>
+</html>
