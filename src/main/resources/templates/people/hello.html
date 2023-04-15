@@ -10,10 +10,13 @@
 <div class="content">
     <p class="title"> Список Людей</p>
     <div th:each="person:${people}" th:object="${person}">
-    <a th:href="@{/people/{id}}"  th:text="'Имя: '+${person.getName()} + '|| Возраст: ' +
-    ${person.getAge()} + '||Email: ' + ${person.getEmail()}"
-       class="person"></a>
+        <ul>
+            <li class="list"><a th:href="@{/people/{id}}" th:text="'Имя: '+${person.getName()} + '   Возраст: ' +
+    ${person.getAge()} + '   Email: ' + ${person.getEmail()}"
+                                class="person"></a></li>
+        </ul>
     </div>
+
 </div>
 </body>
 </html>
