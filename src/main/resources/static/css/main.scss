@@ -18,17 +18,18 @@ body {
   .person {
     font-style: italic;
     margin: 0 0 15px 0;
+    text-align: center;
   }
 
   .person:hover {
     //font-size: 15px;
     color: green;
   }
-  .list::before{
-    content: url('../img/завантаження.png');
 
+  .list::before {
+    content: url("../img/res20.png");
+    //padding: 0 5px 0 0 ;
 
-    //background: url("static/img/завантаження.jpg");
   }
 
 }

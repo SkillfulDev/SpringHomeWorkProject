@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -145,12 +144,13 @@ body {
 .content .person {
   font-style: italic;
   margin: 0 0 15px 0;
+  text-align: center;
 }
 .content .person:hover {
   color: green;
 }
 .content .list::before {
-  content: url("../img/завантаження.png");
+  content: url("../img/res20.png");
 }
 
 /*# sourceMappingURL=main.css.map */
