@@ -24,7 +24,7 @@ public class PersonController {
     @GetMapping("/{id}")
     public String getPerson(@PathVariable("id") int id, Model model){
         model.addAttribute("person",personDAO.getPerson(id));
-        return "/people/person";
+        return "/people/edit";
     }
     @GetMapping("/new")
     public String newPersonPage(Model model){
@@ -37,6 +37,17 @@ public class PersonController {
         personDAO.saveNewPerson(person);
         return "redirect:/people";
 
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id){
+        personDAO.delete(id);
+        return "redirect:/people";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editPerson(@PathVariable("id") int id, Model model){
+        model.addAttribute("person",personDAO.getPerson(id));
+        return "/people/editPage";
     }
 
 

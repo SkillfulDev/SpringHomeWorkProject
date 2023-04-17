@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Список людей</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}" href="">
+</head>
+<body>
+<div class="content">
+  <form th:action="@{/people/{id} (id=${person.getId()})}" th:method="PATCH" th:object="${person}">
+    <div class="field">
+      <label for="name">Введите имя</label>
+      <input type="text" th:field="*{name}" id="name">
+    </div>
+    <br>
+    <div class="field">
+      <label for="age">Введите возраст</label>
+      <input th:type="text" th:field="*{age}" id="age">
+    </div>
+    <br>
+    <div class="field">
+      <label for="e-mail">Введите e-mail</label>
+      <input th:type="text" th:field="*{email}" id="e-mail">
+    </div>
+    <br>
+    <button class="tap" type="submit">Создать</button>
+
+  </form>
+
+</div>
+</body>
+</html>

@@ -45,4 +45,12 @@ public class PersonDAO {
 
         session.persist(person);
     }
+
+    @Transactional
+    public void delete(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Person person = session.get(Person.class, id);
+        session.remove(person);
+
+    }
 }
