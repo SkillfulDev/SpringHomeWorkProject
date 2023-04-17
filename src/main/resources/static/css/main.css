@@ -136,21 +136,51 @@ body {
 
 .content {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 50px;
+  max-width: 800px;
+  max-height: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .content .title {
   font-size: 50px;
   margin: 0 0 30px 0;
+  text-shadow: 2px 2px grey;
 }
 .content .person {
   font-style: italic;
-  margin: 0 0 15px 0;
-  text-align: center;
 }
 .content .person:hover {
   color: green;
 }
+.content .list {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
 .content .list::before {
   content: url("../img/res20.png");
+  padding: 0 15px 0 30px;
+  left: 0;
+  right: 0;
+  width: auto;
+}
+.content .tap {
+  margin-top: 30px;
+  border: 1px solid black;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+}
+.content .tap:active {
+  position: relative;
+  top: 3px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.content .bottom {
+  text-align: left;
 }
 
 /*# sourceMappingURL=main.css.map */

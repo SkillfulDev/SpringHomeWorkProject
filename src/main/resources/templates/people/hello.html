@@ -9,13 +9,19 @@
 <body>
 <div class="content">
     <p class="title"> Список Людей</p>
-    <div th:each="person:${people}" th:object="${person}">
-        <ul>
-            <li class="list"><a th:href="@{/people/{id}}" th:text="'Имя: '+${person.getName()} + '   Возраст: ' +
+    <div class="main" th:each="person:${people}" th:object="${person}">
+
+        <p class="list"><a th:href="@{/people/{id}}" th:text="'Имя: '+${person.getName()} + '   Возраст: ' +
     ${person.getAge()} + '   Email: ' + ${person.getEmail()}"
-                                class="person"></a></li>
-        </ul>
+                           class="person"></a></p>
+
+
     </div>
+    <form th:action="@{/people/new}" th:method="GET">
+        <div class="bottom">
+            <button class="tap" type="submit">Добавить человека</button>
+        </div>
+    </form>
 
 </div>
 </body>
