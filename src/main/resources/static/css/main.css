@@ -182,5 +182,26 @@ body {
 .content .bottom {
   text-align: left;
 }
+.content input {
+  border: 1px solid grey;
+  border-radius: 30px;
+}
+.content .inform {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.content div.field {
+  padding-bottom: 5px;
+}
+.content div.field label {
+  display: block;
+  float: left;
+  width: 120px;
+  height: 15px;
+}
+.content div.field input:hover {
+  box-shadow: 10px 9px 10px 0px rgba(0, 0, 0, 0.5);
+}
 
 /*# sourceMappingURL=main.css.map */

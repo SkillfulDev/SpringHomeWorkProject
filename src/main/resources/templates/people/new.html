@@ -2,21 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Список людей</title>
-  <link rel="stylesheet" th:href="@{/css/main.css}" href="">
+    <meta charset="UTF-8">
+    <title>Список людей</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="">
 </head>
 <body>
-<form th:action="@{/people/new}" th:method="POST" th:object="${person}">
-  <label for="name">Введите имя</label>
-  <input th:type="text" th:field="*{name}" id="name">
-  <label for="age">Введите возраст</label>
-  <input th:type="text" th:field="*{age}" id="age">
-  <label for="e-mail">Введите e-mail</label>
-  <input th:type="text" th:field="*{email}" id="e-mail">
+<div class="content">
+    <div class="inform">
+        <form th:action="@{/people}" th:method="POST" th:object="${person}">
+            <div class="field">
+                <label for="name">Введите имя</label>
+                <input th:type="text" th:field="*{name}" id="name">
+            </div>
+            <br>
+            <div class="field">
+                <label for="age">Введите возраст</label>
+                <input th:type="text" th:field="*{age}" id="age">
+            </div>
+            <br>
+            <div class="field">
+                <label for="e-mail">Введите e-mail</label>
+                <input th:type="text" th:field="*{email}" id="e-mail">
+            </div>
+            <br>
+            <button class="tap" type="submit">Создать</button>
 
-  <button type="submit">Создать</button>
-
-</form>
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -2,9 +2,7 @@ package ua.chernonog.springcourse.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ua.chernonog.springcourse.dao.PersonDAO;
 import ua.chernonog.springcourse.models.Person;
 
@@ -32,6 +30,13 @@ public class PersonController {
     public String newPersonPage(Model model){
         model.addAttribute("person", new Person());
         return "/people/new";
+    }
+
+    @PostMapping()
+    public String createNewPerson(@ModelAttribute("person") Person person){
+        personDAO.saveNewPerson(person);
+        return "redirect:/people";
+
     }
 
 

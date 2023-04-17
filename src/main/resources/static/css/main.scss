@@ -33,7 +33,8 @@ body {
   .person:hover {
     color: green;
   }
-  .main{
+
+  .main {
     //margin: 0 0 30px 0;
   }
 
@@ -53,8 +54,7 @@ body {
     left: 0;
     right: 0;
     width: auto;
-    //border: 1px solid black;
-    //padding: 0 5px 0 0 ;
+
 
   }
 
@@ -68,13 +68,42 @@ body {
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.5);
     border-radius: 30px;
   }
-  .tap:active{
+
+  .tap:active {
     position: relative;
     top: 3px;
-    box-shadow:0px 2px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
   }
-  .bottom{
+
+  .bottom {
     text-align: left;
+  }
+
+  input {
+    border: 1px solid grey;
+    border-radius: 30px;
+  }
+
+  .inform {
+    //border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  div.field {
+    padding-bottom: 5px;
+  }
+
+  div.field label {
+    display: block;
+    float: left;
+    width: 120px;
+    height: 15px;
+  }
+
+  div.field input:hover {
+    box-shadow: 10px 9px 10px 0px rgba(0, 0, 0, 0.5);
   }
 }
 

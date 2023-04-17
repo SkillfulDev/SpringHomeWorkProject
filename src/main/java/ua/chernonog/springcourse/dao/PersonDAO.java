@@ -31,11 +31,18 @@ public class PersonDAO {
 
     @Transactional
     public Person getPerson(int id) {
-       Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
 
         Person person = session.get(Person.class, id);
 
         return person;
 
+    }
+
+    @Transactional
+    public void saveNewPerson(Person person) {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.persist(person);
     }
 }
