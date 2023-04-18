@@ -1,7 +1,9 @@
 package ua.chernonog.springcourse.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.chernonog.springcourse.dao.PersonDAO;
 import ua.chernonog.springcourse.models.Person;
@@ -33,7 +35,9 @@ public class PersonController {
     }
 
     @PostMapping()
-    public String createNewPerson(@ModelAttribute("person") Person person){
+    public String createNewPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+        if (bindingResult.hasErrors())
+            return "/people/new";
         personDAO.saveNewPerson(person);
         return "redirect:/people";
 
@@ -48,6 +52,15 @@ public class PersonController {
     public String editPerson(@PathVariable("id") int id, Model model){
         model.addAttribute("person",personDAO.getPerson(id));
         return "/people/editPage";
+    }
+
+    @PatchMapping("/{id}")
+    public String changePerson (@PathVariable("id") int id, @ModelAttribute("person") @Valid Person person,
+                                BindingResult bindingResult){
+        if (bindingResult.hasErrors())
+            return "/people/editPage";
+        personDAO.changePerson(person,id);
+        return "redirect:/people";
     }
 
 

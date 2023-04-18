@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import ua.chernonog.springcourse.models.Person;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDAO {
@@ -39,6 +40,7 @@ public class PersonDAO {
 
     }
 
+
     @Transactional
     public void saveNewPerson(Person person) {
         Session session = sessionFactory.getCurrentSession();
@@ -51,6 +53,14 @@ public class PersonDAO {
         Session session = sessionFactory.getCurrentSession();
         Person person = session.get(Person.class, id);
         session.remove(person);
+
+    }
+
+    @Transactional
+    public void changePerson(Person person, int id) {
+        Session session = sessionFactory.getCurrentSession();
+        session.get(Person.class, id);
+        session.merge(person);
 
     }
 }

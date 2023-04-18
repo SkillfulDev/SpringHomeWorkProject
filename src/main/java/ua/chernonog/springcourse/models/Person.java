@@ -1,6 +1,11 @@
 package ua.chernonog.springcourse.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,12 +19,18 @@ public class Person {
     private int id;
 
     @Column(name="name")
+    @NotEmpty(message = "Поле не должно быть пустым")
+    @Size(min = 2,max=15,message = "Длина должна быть в диапазоне от 2 до 15 символов")
+
     private String name;
 
     @Column(name="age")
+    @Min(value = 1, message = "Возраст должен быть больше 0")
     private int age;
 
     @Column(name="email")
+    @Email
+    @NotEmpty(message="Это поле не должно быть пустым")
     private String email;
 
     public Person (){

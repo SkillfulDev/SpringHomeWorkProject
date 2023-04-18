@@ -12,19 +12,22 @@
     <div class="field">
       <label for="name">Введите имя</label>
       <input type="text" th:field="*{name}" id="name">
+      <div class="errors" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
     </div>
     <br>
     <div class="field">
       <label for="age">Введите возраст</label>
       <input th:type="text" th:field="*{age}" id="age">
+      <div class="errors" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</div>
     </div>
     <br>
     <div class="field">
       <label for="e-mail">Введите e-mail</label>
       <input th:type="text" th:field="*{email}" id="e-mail">
+      <div class="errors" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
     </div>
     <br>
-    <button class="tap" type="submit">Создать</button>
+    <button class="tap" type="submit">Изменить!</button>
 
   </form>
 

@@ -137,7 +137,6 @@ body {
 .content {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 50px;
-  border: 1px solid green;
   max-width: 800px;
   max-height: 800px;
   margin-left: auto;
@@ -208,6 +207,11 @@ body {
 }
 .content div.inside {
   text-align: left;
+}
+.content .errors {
+  color: red;
+  text-decoration: underline;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=main.css.map */
