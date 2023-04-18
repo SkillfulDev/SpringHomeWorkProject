@@ -24,9 +24,8 @@ public class PersonDAO {
     @Transactional
     public List<Person> showPeople() {
         Session session = sessionFactory.getCurrentSession();
-        List<Person> people = session.createQuery("Select p from Person p", Person.class).getResultList();
 
-        return people;
+        return session.createQuery("Select p from Person p", Person.class).getResultList();
 
     }
 
