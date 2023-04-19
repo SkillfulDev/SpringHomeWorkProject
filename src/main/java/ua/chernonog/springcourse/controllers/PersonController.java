@@ -11,7 +11,7 @@ import ua.chernonog.springcourse.services.PeopleService;
 
 @Controller
 @RequestMapping("/people")
-public class PersonController {
+public class   PersonController {
   private final PeopleService peopleService;
 @Autowired
     public PersonController(PeopleService peopleService) {
@@ -22,6 +22,7 @@ public class PersonController {
     @GetMapping()
     public String showPeople(Model model){
         model.addAttribute("people",peopleService.findAll());
+        peopleService.findByName("Kate");
         return "people/hello";
     }
 

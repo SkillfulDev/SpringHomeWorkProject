@@ -45,4 +45,7 @@ public class PeopleService {
         peopleRepository.deleteById(id);
     }
 
+    public List<Person> findByName(String name){
+        return peopleRepository.findByName(name);
+    }
 }
