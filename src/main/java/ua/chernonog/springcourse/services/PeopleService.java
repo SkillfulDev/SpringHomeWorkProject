@@ -3,6 +3,7 @@ package ua.chernonog.springcourse.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.chernonog.springcourse.models.Mood;
 import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.repositories.PeopleRepository;
 
@@ -31,23 +32,24 @@ public class PeopleService {
     }
 
     @Transactional
-    public void save(Person person){
+    public void save(Person person) {
+        person.setMood(Mood.HAPPY);
         person.setCreatedAt(new Date());
         peopleRepository.save(person);
     }
 
     @Transactional
-    public void update (Person person, int id){
+    public void update(Person person, int id) {
         person.setId(id);
         peopleRepository.save(person);
     }
 
     @Transactional
-    public void delete(int id){
+    public void delete(int id) {
         peopleRepository.deleteById(id);
     }
 
-    public List<Person> findByName(String name){
+    public List<Person> findByName(String name) {
         return peopleRepository.findByName(name);
     }
 }

@@ -10,39 +10,41 @@ import java.util.Date;
 
 @Component
 @Entity
-@Table(name="person")
+@Table(name = "person")
 public class Person {
 
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="name")
+    @Column(name = "name")
     @NotEmpty(message = "Поле не должно быть пустым")
-    @Size(min = 2,max=15,message = "Длина должна быть в диапазоне от 2 до 15 символов")
+    @Size(min = 2, max = 15, message = "Длина должна быть в диапазоне от 2 до 15 символов")
 
     private String name;
 
-    @Column(name="age")
+    @Column(name = "age")
     @Min(value = 1, message = "Возраст должен быть больше 0")
     private int age;
 
-    @Column(name="email")
+    @Column(name = "email")
     @Email
-    @NotEmpty(message="Это поле не должно быть пустым")
+    @NotEmpty(message = "Это поле не должно быть пустым")
     private String email;
 
-    @Column(name="dateOfBirth")
+    @Column(name = "dateOfBirth")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateOfBirth;
 
-    @Column(name="createdAt")
+    @Column(name = "createdAt")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @Enumerated(EnumType.STRING)
+    private Mood mood;
 
-    public Person (){
+    public Person() {
 
     }
 
@@ -98,6 +100,14 @@ public class Person {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    public void setMood(Mood mood) {
+        this.mood = mood;
     }
 
     @Override
