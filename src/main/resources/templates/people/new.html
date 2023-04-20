@@ -29,6 +29,12 @@
                 <div class="errors" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
             </div>
             <br>
+            <div class="field">
+                <label for="DOB">Введите дд/мм/гггг</label>
+                <input th:type="text" th:field="*{dateOfBirth}" id="DOB">
+                <div class="errors" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">DOB Error</div>
+            </div>
+            <br>
             <button class="tap" type="submit">Создать</button>
 
         </form>
