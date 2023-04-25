@@ -24,5 +24,12 @@ public class PeopleService {
         return peopleRepository.findAll();
     }
 
+    @Transactional
+    public void save(Person person) {
+        peopleRepository.save(person);
+    }
 
+    public Person getPersonById(int id) {
+      return  peopleRepository.findById(id).orElse(null);
+    }
 }

@@ -11,7 +11,7 @@
     <p class="title"> Список Людей</p>
     <div class="main" th:each="person:${people}" th:object="${person}">
 
-        <p class="list"><a th:href="@{/people/{id} (id=${person.getId()})}" th:text="'Имя: '+${person.getFullName()} + '   Год Рождения: ' +
+        <p class="list"><a th:href="@{/people/{id} (id=${person.getId()})}" th:text="'ФИО: '+${person.getFullName()} + '   Год Рождения: ' +
     ${person.getYearOfBirth()}" class="person"></a></p>
     </div>
     <form th:action="@{/people/new}" th:method="GET">

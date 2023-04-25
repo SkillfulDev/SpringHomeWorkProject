@@ -9,32 +9,26 @@
 <body>
 <div class="content">
     <div class="field">
-        <label for="name">Имя:</label>
+        <label for="name">ФИО:</label>
         <div class="inside">
-            <p th:text="${person.getName()}" id="name"></p>
+            <p th:text="${person.getFullName()()}" id="name"></p>
         </div>
     </div>
     <br>
     <div class="field">
-        <label for="age">Возраст:</label>
+        <label for="age">Год Рождения:</label>
         <div class="inside">
-            <p th:text="${person.getAge()}" id="age"></p>
+            <p th:text="${person.getYearOfBirth()}" id="age"></p>
         </div>
 
     </div>
     <br>
-    <div class="field">
-        <label for="e-mail">E-mail:</label>
-        <div class="inside">
-            <p th:text="${person.getEmail()}" id="e-mail"></p>
+    <form th:action="@{/people/{id}/edit (id=${person.getId()})}" th:method="GET">
+        <div class="bottom">
+            <button class="tap" type="submit">Редактировать!</button>
         </div>
-    </div>
-    <form th:action="@{/people/{id}/edit (id=${person.getId()})}" th:method="GET" >
-    <div class="bottom">
-    <button class="tap" type="submit">Редактировать!</button>
-    </div>
     </form>
-    <form th:action="@{/people/{id} (id=${person.getId()})}" th:method="DELETE" >
+    <form th:action="@{/people/{id} (id=${person.getId()})}" th:method="DELETE">
         <div class="bottom">
             <button class="tap" type="submit">Удалить!</button>
         </div>
