@@ -1,27 +1,29 @@
 package ua.chernonog.springcourse.models;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 @Entity
-@Table(name="person")
+@Table(name = "person")
 public class Person {
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="fullname")
+    @Column(name = "fullname")
     private String fullName;
 
-    @Column(name="year_of_birth")
+    @Column(name = "year_of_birth")
     private int yearOfBirth;
 
     @OneToMany(mappedBy = "owner")
     private List<Book> books;
 
-    public Person (){
+    public Person() {
 
     }
 
