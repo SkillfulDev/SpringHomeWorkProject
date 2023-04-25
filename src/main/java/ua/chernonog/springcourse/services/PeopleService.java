@@ -8,6 +8,7 @@ import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.repositories.PeopleRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -30,6 +31,17 @@ public class PeopleService {
     }
 
     public Person getPersonById(int id) {
-      return  peopleRepository.findById(id).orElse(null);
+        return peopleRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public void deletePersonById(int id) {
+        peopleRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void changePerson(int id, Person person) {
+        person.setId(id);
+        peopleRepository.save(person);
     }
 }

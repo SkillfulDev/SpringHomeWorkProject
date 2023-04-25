@@ -45,4 +45,24 @@ public class PeopleController {
 
         return "people/edit";
     }
+    @DeleteMapping("/{id}")
+    public String deletePerson(@PathVariable("id") int id){
+        peopleService.deletePersonById(id);
+
+        return "redirect:/people";
+    }
+
+    @PatchMapping("/{id}")
+    public String changePerson(@PathVariable("id") int id,@ModelAttribute("person") Person person){
+        peopleService.changePerson(id,person);
+
+        return "redirect:/people";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String changePage(@PathVariable("id") int id,Model model){
+        model.addAttribute("person",peopleService.getPersonById(id));
+
+        return "people/editPage";
+    }
 }
