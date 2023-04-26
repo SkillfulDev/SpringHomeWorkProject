@@ -5,16 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.chernonog.springcourse.models.Book;
+import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.services.BooksService;
+import ua.chernonog.springcourse.services.PeopleService;
 
 @Controller
 @RequestMapping("/books")
 public class BooksController {
     private final BooksService booksService;
+    private final PeopleService peopleService;
 
     @Autowired
-    public BooksController(BooksService booksService) {
+    public BooksController(BooksService booksService, PeopleService peopleService) {
         this.booksService = booksService;
+        this.peopleService = peopleService;
     }
 
     @GetMapping()
@@ -42,6 +46,8 @@ public class BooksController {
     @GetMapping("/{id}")
     public String showBook(@PathVariable("id") int id, Model model){
         model.addAttribute("book", booksService.showBook(id));
+//        model.addAttribute("person",booksService.findByOwner())
+
 
         return "books/showBook";
     }

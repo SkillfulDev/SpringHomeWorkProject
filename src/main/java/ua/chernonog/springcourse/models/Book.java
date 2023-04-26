@@ -21,7 +21,7 @@ public class Book {
     @Column(name="year_of_production")
     private int yearOfProduction;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_person",referencedColumnName = "id")
     private Person owner;
 

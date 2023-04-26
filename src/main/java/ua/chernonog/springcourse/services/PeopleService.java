@@ -21,6 +21,7 @@ public class PeopleService {
         this.peopleRepository = peopleRepository;
     }
 
+
     public List<Person> findAll() {
         return peopleRepository.findAll();
     }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.chernonog.springcourse.models.Book;
+import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.repositories.BooksRepository;
 
 import java.util.List;
@@ -42,5 +43,9 @@ public class BooksService {
     public void changeBook(int id, Book book) {
         book.setId(id);
         booksRepository.save(book);
+    }
+
+    public List<Book> findByOwner(Person person) {
+       return booksRepository.findAllByOwner(person);
     }
 }

@@ -20,8 +20,31 @@
         <div class="inside">
             <p th:text="${person.getYearOfBirth()}" id="age"></p>
         </div>
-
     </div>
+    <br>
+    <div class="field">
+        <p>Список книг:</p>
+        <div class="inside">
+                <div th:if="${books.isEmpty()}">
+                    <li class="notPresent">Человек пока не взял ни одной книги</li>
+                </div>
+                <div th:unless="${books.isEmpty()}">
+                    <div th:each="book:${books}" th:object="${book}">
+                        <li th:text="${book.getTitle()}"></li>
+                </div>
+
+           </div>
+        </div>
+    </div>
+    <br>
+<!--    <div th:if="${person.getBooks().isEmpty()}">-->
+<!--        <p>Female</p>-->
+<!--    </div>-->
+<!--    <div th:unless="${person.getBooks().isEmpty()}">-->
+<!--        <p>Male </p>-->
+<!--    </div>-->
+
+
     <br>
     <form th:action="@{/people/{id}/edit (id=${person.getId()})}" th:method="GET">
         <div class="bottom">

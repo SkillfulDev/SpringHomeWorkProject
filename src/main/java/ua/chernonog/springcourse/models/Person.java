@@ -1,6 +1,7 @@
 package ua.chernonog.springcourse.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class Person {
     @Column(name = "year_of_birth")
     private int yearOfBirth;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner",fetch = FetchType.EAGER)
     private List<Book> books;
 
     public Person() {

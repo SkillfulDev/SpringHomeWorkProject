@@ -171,7 +171,7 @@ body {
   text-align: left;
 }
 .content .listbook::before {
-  content: url("../img/book20.png");
+  content: url("../img/res20.png");
   padding: 0 15px 0 30px;
   left: 0;
   right: 0;
@@ -224,6 +224,9 @@ body {
   color: red;
   text-decoration: underline;
   font-style: italic;
+}
+.content .notPresent {
+  color: red;
 }
 
 /*# sourceMappingURL=main.css.map */
