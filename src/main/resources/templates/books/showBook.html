@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Список людей</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="">
+</head>
+<body>
+<div class="content">
+    <div class="field">
+        <label for="title">Название:</label>
+        <div class="inside">
+            <p th:text="${book.getTitle()}" id="title"></p>
+        </div>
+    </div>
+    <br>
+    <div class="field">
+        <label for="author">Автор:</label>
+        <div class="inside">
+            <p th:text="${book.getAuthor()}" id="author"></p>
+        </div>
+    </div>
+    <br>
+    <div class="field">
+        <label for="yearOfProduction">Год публикации:</label>
+        <div class="inside">
+            <p th:text="${book.getYearOfProduction()}" id="yearOfProduction"></p>
+        </div>
+    </div>
+    <br>
+    <form th:action="@{/books/{id}/edit (id=${book.getId()})}" th:method="GET">
+        <div class="bottom">
+            <button class="tap" type="submit">Редактировать!</button>
+        </div>
+    </form>
+    <form th:action="@{/books/{id} (id=${book.getId()})}" th:method="DELETE">
+        <div class="bottom">
+            <button class="tap" type="submit">Удалить!</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

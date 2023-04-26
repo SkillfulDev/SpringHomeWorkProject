@@ -14,7 +14,7 @@
     <p class="listbook"><a th:href="@{/books/{id} (id=${book.getId()})}" th:text="'Название книги: '+${book.getTitle()} + ' Автор: ' +
     ${book.getAuthor()} + ' Год публикации  ' +${book.getYearOfProduction()}" class="person"></a></p>
   </div>
-  <form th:action="@{/book/new}" th:method="GET">
+  <form th:action="@{/books/new}" th:method="GET">
     <div class="bottom">
       <button class="tap" type="submit">Добавить книгу</button>
     </div>

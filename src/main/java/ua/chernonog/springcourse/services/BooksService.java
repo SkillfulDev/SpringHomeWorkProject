@@ -20,6 +20,27 @@ public class BooksService {
 
 
     public List<Book> showAllBooks() {
-      return  booksRepository.findAll();
+        return booksRepository.findAll();
+    }
+
+    @Transactional
+    public void saveBook(Book book) {
+        booksRepository.save(book);
+    }
+
+    @Transactional
+    public Book showBook(int id) {
+        return booksRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public void deleteBook(int id) {
+        booksRepository.deleteById(id);
+    }
+
+@Transactional
+    public void changeBook(int id, Book book) {
+        book.setId(id);
+        booksRepository.save(book);
     }
 }
