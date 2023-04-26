@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Список людей</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}" href="">
+</head>
+<body>
+<div class="content">
+  <p class="title"> Список Книг</p>
+  <div class="main" th:each="book:${books}" th:object="${book}">
+
+    <p class="listbook"><a th:href="@{/books/{id} (id=${book.getId()})}" th:text="'Название книги: '+${book.getTitle()} + ' Автор: ' +
+    ${book.getAuthor()} + ' Год публикации  ' +${book.getYearOfProduction()}" class="person"></a></p>
+  </div>
+  <form th:action="@{/book/new}" th:method="GET">
+    <div class="bottom">
+      <button class="tap" type="submit">Добавить книгу</button>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>

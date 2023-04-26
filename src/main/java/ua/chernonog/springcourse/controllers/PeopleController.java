@@ -22,7 +22,7 @@ public class PeopleController {
     public String showAll(Model model) {
         model.addAttribute("people", peopleService.findAll());
 
-        return "people/hello";
+        return "people/showAllPeople";
 
     }
 
