@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.chernonog.springcourse.models.Book;
 import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.repositories.PeopleRepository;
 
@@ -45,4 +46,6 @@ public class PeopleService {
         person.setId(id);
         peopleRepository.save(person);
     }
+
+
 }

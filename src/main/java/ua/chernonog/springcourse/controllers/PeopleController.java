@@ -1,9 +1,11 @@
 package ua.chernonog.springcourse.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.chernonog.springcourse.models.Book;
 import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.services.BooksService;
 import ua.chernonog.springcourse.services.PeopleService;
@@ -70,5 +72,15 @@ public class PeopleController {
         model.addAttribute("person", peopleService.getPersonById(id));
 
         return "people/editPage";
+    }
+
+    @PostMapping("/add")
+    public String addBookToPerson(@ModelAttribute("person") Person person, @ModelAttribute("book") Book book) {
+        Person personNew = peopleService.getPersonById(person.getId());
+
+        booksService.findByOwner(personNew).add(book);
+        booksService.changeBook(book);
+
+        return "redirect:/people";
     }
 }
