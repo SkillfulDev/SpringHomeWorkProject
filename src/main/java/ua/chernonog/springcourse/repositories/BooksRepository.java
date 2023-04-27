@@ -1,6 +1,8 @@
 package ua.chernonog.springcourse.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ua.chernonog.springcourse.models.Book;
 import ua.chernonog.springcourse.models.Person;
@@ -8,8 +10,10 @@ import ua.chernonog.springcourse.models.Person;
 import java.util.List;
 
 @Repository
-public interface BooksRepository extends JpaRepository<Book,Integer> {
+public interface BooksRepository extends JpaRepository<Book, Integer> {
     public List<Book> findAllByOwner(Person person);
 
-   public Person findOwnerById(int id);
+
+    @Query(value = "SELECT o.owner FROM Book o where o.id=:id")
+    public Person findOwnerById(@Param("id") int id);
 }

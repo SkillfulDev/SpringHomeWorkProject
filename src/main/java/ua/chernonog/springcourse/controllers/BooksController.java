@@ -46,7 +46,7 @@ public class BooksController {
     @GetMapping("/{id}")
     public String showBook(@PathVariable("id") int id, Model model) {
         model.addAttribute("book", booksService.showBook(id));
-        System.out.println(booksService.findOwnerById(id));
+        model.addAttribute("person",booksService.find(id));
         return "books/showBook";
     }
 

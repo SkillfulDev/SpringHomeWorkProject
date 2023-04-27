@@ -50,7 +50,7 @@ public class BooksService {
 
     }
 
-    public Person findOwnerById(int id) {
+    public Person find(int id){
         return booksRepository.findOwnerById(id);
     }
 
