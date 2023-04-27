@@ -8,6 +8,7 @@ import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.repositories.BooksRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -29,7 +30,7 @@ public class BooksService {
         booksRepository.save(book);
     }
 
-    @Transactional
+
     public Book showBook(int id) {
         return booksRepository.findById(id).orElse(null);
     }
@@ -51,7 +52,7 @@ public class BooksService {
     }
 
     public Person find(int id){
-        return booksRepository.findOwnerById(id);
+        return booksRepository.findOwnerById(id).orElse(null);
     }
 
 

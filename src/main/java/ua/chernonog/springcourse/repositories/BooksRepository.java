@@ -8,6 +8,7 @@ import ua.chernonog.springcourse.models.Book;
 import ua.chernonog.springcourse.models.Person;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface BooksRepository extends JpaRepository<Book, Integer> {
@@ -15,5 +16,5 @@ public interface BooksRepository extends JpaRepository<Book, Integer> {
 
 
     @Query(value = "SELECT o.owner FROM Book o where o.id=:id")
-    public Person findOwnerById(@Param("id") int id);
+    public Optional<Person> findOwnerById(@Param("id") int id);
 }

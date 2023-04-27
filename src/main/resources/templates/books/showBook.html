@@ -28,15 +28,14 @@
             <p th:text="${book.getYearOfProduction()}" id="yearOfProduction"></p>
         </div>
     </div>
-    <div>
-        <p th:text="${person.getFullName()}"></p>
+    <div class="inside">
+        <div th:if="${person.getId() == 0}">
+            <p> Эту книгу еще никто не взял</p>
+        </div>
+        <div th:unless="${person.getId()==0}">
+            <p th:text="'Эта книга у: '+${person.getFullName()}"></p>
+        </div>
     </div>
-<!--    <div th:if="${book.getOwner()}">-->
-<!--        <p>Эту книгу еще никто не взял</p>-->
-<!--    </div>-->
-<!--    <div th:unless="${book.getOwner()==null}">-->
-<!--        <p th:text="${book.getOwner()}"></p>-->
-<!--    </div>-->
     <br>
     <form th:action="@{/books/{id}/edit (id=${book.getId()})}" th:method="GET">
         <div class="bottom">
