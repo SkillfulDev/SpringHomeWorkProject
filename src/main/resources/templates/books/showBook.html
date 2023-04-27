@@ -31,6 +31,13 @@
     <div class="inside">
         <div th:if="${person.getId() == 0}">
             <p> Эту книгу еще никто не взял</p>
+            <form th:action="@{/books/add}" th:method="POST">
+                <label for="person">Выбирите кому назначить эту книгу</label>
+                <select th:object="${person}" th:field="*{id}" id="person">
+                    <option th:each="person:${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"></option>
+                </select>
+                <input type="submit" value="Назначить Книгу">
+            </form>
         </div>
         <div th:unless="${person.getId()==0}">
             <p th:text="'Эта книга у: '+${person.getFullName()}"></p>

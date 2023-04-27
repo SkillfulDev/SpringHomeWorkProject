@@ -46,6 +46,7 @@ public class BooksController {
     @GetMapping("/{id}")
     public String showBook(@PathVariable("id") int id, Model model) {
         model.addAttribute("book", booksService.showBook(id));
+        model.addAttribute("people",peopleService.findAll());
         if (booksService.find(id) == null) {
             model.addAttribute("person", new Person());
 
