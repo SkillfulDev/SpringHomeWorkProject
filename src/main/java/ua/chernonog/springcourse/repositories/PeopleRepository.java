@@ -6,4 +6,5 @@ import ua.chernonog.springcourse.models.Person;
 
 @Repository
 public interface PeopleRepository extends JpaRepository<Person,Integer> {
+
 }

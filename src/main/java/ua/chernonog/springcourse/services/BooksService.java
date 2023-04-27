@@ -39,13 +39,20 @@ public class BooksService {
         booksRepository.deleteById(id);
     }
 
-@Transactional
+    @Transactional
     public void changeBook(int id, Book book) {
         book.setId(id);
         booksRepository.save(book);
     }
 
     public List<Book> findByOwner(Person person) {
-       return booksRepository.findAllByOwner(person);
+        return booksRepository.findAllByOwner(person);
+
     }
+
+    public Person findOwnerById(int id) {
+        return booksRepository.findOwnerById(id);
+    }
+
+
 }

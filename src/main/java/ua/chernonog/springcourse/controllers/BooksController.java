@@ -37,39 +37,37 @@ public class BooksController {
     }
 
     @PostMapping()
-    public String saveBook(@ModelAttribute("book") Book book){
+    public String saveBook(@ModelAttribute("book") Book book) {
         booksService.saveBook(book);
 
         return "redirect:/books";
     }
 
     @GetMapping("/{id}")
-    public String showBook(@PathVariable("id") int id, Model model){
+    public String showBook(@PathVariable("id") int id, Model model) {
         model.addAttribute("book", booksService.showBook(id));
-//        model.addAttribute("person",booksService.findByOwner())
-
-
+        System.out.println(booksService.findOwnerById(id));
         return "books/showBook";
     }
 
     @DeleteMapping("/{id}")
-    public String deleteBook(@PathVariable("id") int id){
+    public String deleteBook(@PathVariable("id") int id) {
         booksService.deleteBook(id);
 
         return "redirect:/books";
     }
 
     @GetMapping("/{id}/edit")
-    public String editBookPage(@PathVariable("id") int id,Model model){
-        model.addAttribute("book",booksService.showBook(id));
+    public String editBookPage(@PathVariable("id") int id, Model model) {
+        model.addAttribute("book", booksService.showBook(id));
 
         return "books/editBookPage";
 
     }
 
     @PatchMapping("/{id}")
-    public String editBook(@PathVariable("id") int id, @ModelAttribute("book") Book book){
-        booksService.changeBook(id,book);
+    public String editBook(@PathVariable("id") int id, @ModelAttribute("book") Book book) {
+        booksService.changeBook(id, book);
 
         return "redirect:/books";
     }
