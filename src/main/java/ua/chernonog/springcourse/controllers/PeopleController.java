@@ -84,4 +84,10 @@ public class PeopleController {
 
         return "redirect:/people";
     }
+
+    @PostMapping("/{id}/remove")
+    public String removeBookFromPerson(@PathVariable("id") int id){
+        booksService.removePersonFromBook(id);
+        return "redirect:/books/{id}";
+    }
 }

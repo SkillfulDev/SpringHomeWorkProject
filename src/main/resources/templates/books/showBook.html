@@ -41,6 +41,9 @@
         </div>
         <div th:unless="${person.getId()==0}">
             <p th:text="'Эта книга у: '+${person.getFullName()}"></p>
+            <form th:action="@{/people/{id}/remove (id=${book.getId()})}" method="POST" >
+                <input type="submit" value="Освободить">
+            </form>
         </div>
     </div>
     <br>

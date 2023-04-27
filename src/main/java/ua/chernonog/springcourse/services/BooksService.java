@@ -60,5 +60,10 @@ public class BooksService {
         booksRepository.addPersonToBook(person, id);
     }
 
+    @Transactional
+    public void removePersonFromBook(int id){
+        booksRepository.removePersonFromBoor(id);
+    }
+
 
 }
