@@ -51,8 +51,13 @@ public class BooksService {
 
     }
 
-    public Person find(int id){
+    public Person find(int id) {
         return booksRepository.findOwnerById(id).orElse(null);
+    }
+
+    @Transactional
+    public void addPersonToBook(int id, Person person) {
+        booksRepository.addPersonToBook(person, id);
     }
 
 

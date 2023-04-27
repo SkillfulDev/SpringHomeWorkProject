@@ -19,7 +19,7 @@ public interface BooksRepository extends JpaRepository<Book, Integer> {
     @Query(value = "SELECT o.owner FROM Book o where o.id=:id")
     public Optional<Person> findOwnerById(@Param("id") int id);
 
-
-    @Query(value = "update Book  set owner=:id where id=:id")
-    public void addPersonToBook(@Param("owner") Person person);
+    @Modifying
+    @Query(value = "update Book  set owner=:owner where id=:id")
+    public void addPersonToBook(@Param("owner") Person person, @Param("id") int id);
 }

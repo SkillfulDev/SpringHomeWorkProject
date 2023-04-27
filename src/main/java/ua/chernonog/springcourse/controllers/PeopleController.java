@@ -10,6 +10,8 @@ import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.services.BooksService;
 import ua.chernonog.springcourse.services.PeopleService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
@@ -74,12 +76,11 @@ public class PeopleController {
         return "people/editPage";
     }
 
-    @PostMapping("/add")
-    public String addBookToPerson(@ModelAttribute("person") Person person, @ModelAttribute("book") Book book) {
+    @PostMapping("/{id}/add")
+    public String addBookToPerson(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
         Person personNew = peopleService.getPersonById(person.getId());
+        booksService.addPersonToBook(id,personNew);
 
-        booksService.findByOwner(personNew).add(book);
-        booksService.changeBook(book);
 
         return "redirect:/people";
     }
