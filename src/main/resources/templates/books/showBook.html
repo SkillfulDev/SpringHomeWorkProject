@@ -9,21 +9,21 @@
 <body>
 <div class="content">
     <div class="field">
-        <label for="title">Название:</label>
+        <label class="not" for="title">Название:</label>
         <div class="inside">
             <p th:text="${book.getTitle()}" id="title"></p>
         </div>
     </div>
     <br>
     <div class="field">
-        <label for="author">Автор:</label>
+        <label class="not" for="author">Автор:</label>
         <div class="inside">
             <p th:text="${book.getAuthor()}" id="author"></p>
         </div>
     </div>
     <br>
     <div class="field">
-        <label for="yearOfProduction">Год публикации:</label>
+        <label class="not" for="yearOfProduction">Год публикации:</label>
         <div class="inside">
             <p th:text="${book.getYearOfProduction()}" id="yearOfProduction"></p>
         </div>
@@ -31,21 +31,27 @@
     <div class="inside">
         <div th:if="${person.getId() == 0}">
             <p> Эту книгу еще никто не взял</p>
+            <br>
             <form th:action="@{/people/{id}/add (id=${book.getId()})}"  th:method="POST">
                 <label for="person">Выбирите кому назначить эту книгу</label>
                 <select th:object="${person}" th:field="*{id}" id="person">
                     <option th:each="person:${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"></option>
                 </select>
-                <input type="submit" value="Назначить Книгу">
+                <div class="bottom">
+                <input class="tap" type="submit" value="Назначить Книгу">
+                </div>
             </form>
         </div>
         <div th:unless="${person.getId()==0}">
             <p th:text="'Эта книга у: '+${person.getFullName()}"></p>
             <form th:action="@{/people/{id}/remove (id=${book.getId()})}" method="POST" >
-                <input type="submit" value="Освободить">
+                <div class="bottom">
+                <input class="tap" type="submit" value="Освободить">
+                </div>
             </form>
         </div>
     </div>
+    <hr>
     <br>
     <form th:action="@{/books/{id}/edit (id=${book.getId()})}" th:method="GET">
         <div class="bottom">

@@ -28,6 +28,7 @@ body {
   .person {
     font-style: italic;
 
+
   }
 
   .person:hover {
@@ -57,6 +58,7 @@ body {
 
 
   }
+
   .listbook {
     //border: 1px solid black;
     margin-left: auto;
@@ -66,6 +68,7 @@ body {
 
 
   }
+
   .listbook::before {
     content: url("../img/res20.png");
     padding: 0 15px 0 30px;
@@ -79,7 +82,7 @@ body {
   .tap {
     margin-top: 30px;
     border: 1px solid black;
-    width: 100px;
+    width: 150px;
     height: 30px;
     text-align: center;
     //background: grey;
@@ -129,6 +132,7 @@ body {
 
   div.inside {
     text-align: left;
+    margin-bottom: 15px;
 
   }
 
@@ -138,9 +142,17 @@ body {
     font-style: italic;
 
   }
-  .notPresent{
+
+  .notPresent {
     color: red;
+
   }
 
+  .not {
+    font-weight: 700;
+  }
+.book{
+  margin-bottom: 15px;
+}
 }
 

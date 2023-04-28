@@ -10,13 +10,13 @@
 <div class="content">
   <form th:action="@{/people/{id} (id=${person.getId()})}" th:method="PATCH" th:object="${person}">
     <div class="field">
-      <label for="name">Введите ФИО</label>
+      <label class="not" for="name">Введите ФИО</label>
       <input type="text" th:field="*{fullName}" id="name">
       <div class="errors" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</div>
     </div>
     <br>
     <div class="field">
-      <label for="age">Введите год рождения</label>
+      <label class="not" for="age">Введите год рождения</label>
       <input th:type="text" th:field="*{yearOfBirth}" id="age">
       <div class="errors" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}">Name Error</div>
     </div>

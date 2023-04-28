@@ -180,7 +180,7 @@ body {
 .content .tap {
   margin-top: 30px;
   border: 1px solid black;
-  width: 100px;
+  width: 150px;
   height: 30px;
   text-align: center;
   box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.5);
@@ -219,6 +219,7 @@ body {
 }
 .content div.inside {
   text-align: left;
+  margin-bottom: 15px;
 }
 .content .errors {
   color: red;
@@ -227,6 +228,12 @@ body {
 }
 .content .notPresent {
   color: red;
+}
+.content .not {
+  font-weight: 700;
+}
+.content .book {
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=main.css.map */
