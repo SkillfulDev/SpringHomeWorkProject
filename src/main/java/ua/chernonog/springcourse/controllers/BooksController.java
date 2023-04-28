@@ -1,6 +1,7 @@
 package ua.chernonog.springcourse.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -80,4 +81,9 @@ public class BooksController {
         return "redirect:/books";
     }
 
+    @GetMapping("{page}/{itemsPerPage}")
+    public String page(@PathVariable("page") int page,@PathVariable("itemsPerPage") int itemsPerPage,Model model){
+       model.addAttribute("books", booksService.pageMethod(page,itemsPerPage));
+        return "books/showAllBooks";
+    }
 }

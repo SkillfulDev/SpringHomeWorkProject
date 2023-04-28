@@ -1,5 +1,7 @@
 package ua.chernonog.springcourse.repositories;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,4 +28,6 @@ public interface BooksRepository extends JpaRepository<Book, Integer> {
     @Modifying
     @Query(value = "update Book  set owner=null where id=:id")
     public void removePersonFromBoor(@Param("id") int id);
+
+    Page<Book> findAll(Pageable page);
 }
