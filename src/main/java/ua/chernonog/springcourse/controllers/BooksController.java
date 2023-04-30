@@ -28,11 +28,16 @@ public class BooksController {
     }
 
     @GetMapping()
-    public String showAllBooks(Model model) {
-
+    public String showAllBooks(@RequestParam(value = "page",required = false) Integer page,
+                               @RequestParam(value = "books_per_page",required = false) Integer booksPerPage,Model model) {
+if (page!=null){
+            model.addAttribute("books", booksService.pageMethod(page,booksPerPage));
+            return "books/showAllBooks";
+        }
         model.addAttribute("books", booksService.showAllBooks());
 
         return "books/showAllBooks";
+
     }
 
     @GetMapping("/new")
@@ -86,15 +91,15 @@ public class BooksController {
         return "redirect:/books";
     }
 
-    @GetMapping("page")
+//    @GetMapping("page")
 //    @ResponseBody
-    public String page(@RequestParam("page") int page,
-                       @RequestParam("books_per_page") int booksPerPage,Model model){
-
-        System.out.println(page);
-        System.out.println(booksPerPage);
-        model.addAttribute("books", booksService.pageMethod(page,booksPerPage));
-        return "books/showAllBooks";
-    }
+//    public String page(@RequestParam("page") int page,
+//                       @RequestParam("books_per_page") int booksPerPage,Model model){
+//
+//        System.out.println(page);
+//        System.out.println(booksPerPage);
+//        model.addAttribute("books", booksService.pageMethod(page,booksPerPage));
+//        return "books/showAllBooks";
+//    }
 
 }
