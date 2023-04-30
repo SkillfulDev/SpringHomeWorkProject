@@ -28,10 +28,11 @@ public class BooksController {
     }
 
     @GetMapping()
-    public String showAllBooks(@RequestParam(value = "page",required = false) Integer page,
-                               @RequestParam(value = "books_per_page",required = false) Integer booksPerPage,Model model) {
-if (page!=null){
-            model.addAttribute("books", booksService.pageMethod(page,booksPerPage));
+    public String showAllBooks(@RequestParam(value = "page", required = false) Integer page,
+                               @RequestParam(value = "books_per_page", required = false) Integer booksPerPage,
+                               @RequestParam(value = "sort_by_year", required = false) boolean isFilter, Model model) {
+        if (page != null||isFilter==true) {
+            model.addAttribute("books", booksService.pageMethod(page, booksPerPage));
             return "books/showAllBooks";
         }
         model.addAttribute("books", booksService.showAllBooks());
@@ -57,7 +58,7 @@ if (page!=null){
     @GetMapping("/{id}")
     public String showBook(@PathVariable("id") int id, Model model) {
         model.addAttribute("book", booksService.showBook(id));
-        model.addAttribute("people",peopleService.findAll());
+        model.addAttribute("people", peopleService.findAll());
         if (booksService.find(id) == null) {
             model.addAttribute("person", new Person());
 
@@ -91,15 +92,5 @@ if (page!=null){
         return "redirect:/books";
     }
 
-//    @GetMapping("page")
-//    @ResponseBody
-//    public String page(@RequestParam("page") int page,
-//                       @RequestParam("books_per_page") int booksPerPage,Model model){
-//
-//        System.out.println(page);
-//        System.out.println(booksPerPage);
-//        model.addAttribute("books", booksService.pageMethod(page,booksPerPage));
-//        return "books/showAllBooks";
-//    }
 
 }

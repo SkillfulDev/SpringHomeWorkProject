@@ -3,6 +3,7 @@ package ua.chernonog.springcourse.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.chernonog.springcourse.models.Book;
@@ -67,8 +68,11 @@ public class BooksService {
         booksRepository.removePersonFromBoor(id);
     }
 
-    public List<Book> pageMethod(int page, int itemsPerPage) {
-        return booksRepository.findAll(PageRequest.of(page, itemsPerPage)).getContent();
+    public List<Book> pageMethod(Integer page, Integer itemsPerPage) {
+        if (page != null) {
+            return booksRepository.findAll(PageRequest.of(page, itemsPerPage)
+            ).getContent();
+        }
+        return booksRepository.findAll(Sort.by("yearOfProduction"));
     }
-
 }
