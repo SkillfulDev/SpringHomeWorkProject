@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Список людей</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}" href="">
+</head>
+<body>
+<div class="content">
+<form th:action="@{/books/search}" th:method="GET">
+  <div class="field">
+  <label class="not" for="search-input">Введите поисковый запрос:</label>
+  <input th:type="text"  id="search-input">
+  <button class="tap" type="submit">Искать!</button>
+  </div>
+</form>
+</div>
+</body>
+</html>

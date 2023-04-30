@@ -92,5 +92,10 @@ public class BooksController {
         return "redirect:/books";
     }
 
+    @GetMapping("/search")
+    public String searchBookPage(){
+        return "books/searchBook";
+    }
+
 
 }
