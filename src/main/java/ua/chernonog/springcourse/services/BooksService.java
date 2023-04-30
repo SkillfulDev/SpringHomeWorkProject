@@ -70,7 +70,7 @@ public class BooksService {
 
     public List<Book> pageMethod(Integer page, Integer itemsPerPage) {
         if (page != null) {
-            return booksRepository.findAll(PageRequest.of(page, itemsPerPage)
+            return booksRepository.findAll(PageRequest.of(page, itemsPerPage,Sort.by("yearOfProduction"))
             ).getContent();
         }
         return booksRepository.findAll(Sort.by("yearOfProduction"));
