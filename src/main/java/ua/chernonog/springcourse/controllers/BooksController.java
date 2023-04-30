@@ -1,14 +1,19 @@
 package ua.chernonog.springcourse.controllers;
 
+import jakarta.validation.GroupSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ua.chernonog.springcourse.models.Book;
 import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.services.BooksService;
 import ua.chernonog.springcourse.services.PeopleService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/books")
@@ -81,9 +86,15 @@ public class BooksController {
         return "redirect:/books";
     }
 
-    @GetMapping("{page}/{itemsPerPage}")
-    public String page(@PathVariable("page") int page,@PathVariable("itemsPerPage") int itemsPerPage,Model model){
-       model.addAttribute("books", booksService.pageMethod(page,itemsPerPage));
+    @GetMapping("page")
+//    @ResponseBody
+    public String page(@RequestParam("page") int page,
+                       @RequestParam("books_per_page") int booksPerPage,Model model){
+
+        System.out.println(page);
+        System.out.println(booksPerPage);
+        model.addAttribute("books", booksService.pageMethod(page,booksPerPage));
         return "books/showAllBooks";
     }
+
 }

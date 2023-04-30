@@ -63,16 +63,12 @@ public class BooksService {
     }
 
     @Transactional
-    public void removePersonFromBook(int id){
+    public void removePersonFromBook(int id) {
         booksRepository.removePersonFromBoor(id);
     }
 
-    public List<Book> pageMethod(int page, int itemsPerPage){
-       List<Book> books = booksRepository.findAll(PageRequest.of(page,itemsPerPage)).getContent();
-        for (Book book : books) {
-            System.out.println(book.getId());
-        }
-        return  booksRepository.findAll(PageRequest.of(page,itemsPerPage)).getContent();
+    public List<Book> pageMethod(int page, int itemsPerPage) {
+        return booksRepository.findAll(PageRequest.of(page, itemsPerPage)).getContent();
     }
 
 }
