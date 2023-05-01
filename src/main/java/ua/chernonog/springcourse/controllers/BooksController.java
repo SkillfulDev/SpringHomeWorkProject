@@ -27,7 +27,7 @@ public class BooksController {
     public String showAllBooks(@RequestParam(value = "page", required = false) Integer page,
                                @RequestParam(value = "books_per_page", required = false) Integer booksPerPage,
                                @RequestParam(value = "sort_by_year", required = false) boolean isFilter, Model model) {
-        if (page != null||isFilter==true) {
+        if (page != null || isFilter == true) {
             model.addAttribute("books", booksService.pageMethod(page, booksPerPage));
             return "books/showAllBooks";
         }
@@ -89,10 +89,14 @@ public class BooksController {
     }
 
     @GetMapping("/search")
-    public String searchBookPage(@RequestParam(value = "search",required = false) String search, Model model){
-        model.addAttribute("books",booksService.findBookByLike(search));
-        model.addAttribute("person", booksService.find(id))
-
+    public String searchBookPage(@RequestParam(value = "hidenId", required = false) String value, @RequestParam(value = "search", required = false) String search, Model model) {
+        model.addAttribute("books", booksService.findBookByLike(search));
+        System.out.println(value);
+        if(value!=null) {
+           int id = Integer.parseInt(value);
+           System.out.println(id);
+           model.addAttribute("person", booksService.find(id));
+       }
         return "books/searchBook";
     }
 

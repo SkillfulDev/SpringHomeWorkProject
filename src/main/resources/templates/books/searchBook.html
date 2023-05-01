@@ -15,16 +15,20 @@
             <button class="tap" type="submit">Искать!</button>
         </div>
     </form>
+    <form th:action="@{books/search}" th:method="GET">
+        <div class="field" th:if="${books.size()>0}">
+            <div class="listbook" th:each="book:${books}" th:object="${book}">
 
-    <div class="field" th:if="${books.size()>0}" >
-        <div class="listbook" th:each="book:${books}" th:object="${book}" >
-            <p th:text="${book.getTitle()}"></p>
+                <input type="hidden" th:value="${book.getId()}" th:name="hidenId"/>
 
+                <p th:text="${book.getTitle()}"></p>
+                <p th:text="'Эта книгу у '${person.fullName}"></p>
+            </div>
         </div>
-    </div>
-    <div th:unless="${books.size()>0}">
-        <p>Книга не найдена!</p>
-    </div>
+        <div th:unless="${books.size()>0}">
+            <p>Книга не найдена!</p>
+        </div>
+    </form>
 </div>
 </body>
 </html>
