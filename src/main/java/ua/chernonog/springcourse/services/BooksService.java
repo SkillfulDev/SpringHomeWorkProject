@@ -74,6 +74,6 @@ public class BooksService {
         return booksRepository.findAll(Sort.by("yearOfProduction"));
     }
     public List<Book> findBookByLike(String str){
-        return booksRepository.findAllByTitleLike(str);
+        return booksRepository.findAllByTitleContaining(str);
     }
 }

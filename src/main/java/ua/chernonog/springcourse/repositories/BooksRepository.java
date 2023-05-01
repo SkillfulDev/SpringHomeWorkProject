@@ -34,5 +34,5 @@ public interface BooksRepository extends JpaRepository<Book, Integer> {
 
     List<Book> findAll(Sort var);
 
-    List<Book> findAllByTitleLike(String str);
+    List<Book> findAllByTitleContaining(String str);
 }

@@ -91,10 +91,7 @@ public class BooksController {
     @GetMapping("/search")
     public String searchBookPage(@RequestParam(value = "search",required = false) String search, Model model){
         model.addAttribute("books",booksService.findBookByLike(search));
-        List<Book> books = booksService.findBookByLike(search);
-        for (Book book : books) {
-            System.out.println(book);
-        }
+
         return "books/searchBook";
     }
 
