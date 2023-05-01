@@ -1,19 +1,15 @@
 package ua.chernonog.springcourse.controllers;
 
-import jakarta.validation.GroupSequence;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import ua.chernonog.springcourse.models.Book;
 import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.services.BooksService;
 import ua.chernonog.springcourse.services.PeopleService;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Controller
 @RequestMapping("/books")
@@ -93,7 +89,12 @@ public class BooksController {
     }
 
     @GetMapping("/search")
-    public String searchBookPage(){
+    public String searchBookPage(@RequestParam(value = "search",required = false) String search, Model model){
+        model.addAttribute("books",booksService.findBookByLike(search));
+        List<Book> books = booksService.findBookByLike(search);
+        for (Book book : books) {
+            System.out.println(book);
+        }
         return "books/searchBook";
     }
 

@@ -33,4 +33,6 @@ public interface BooksRepository extends JpaRepository<Book, Integer> {
     Page<Book> findAll(Pageable page);
 
     List<Book> findAll(Sort var);
+
+    List<Book> findAllByTitleLike(String str);
 }

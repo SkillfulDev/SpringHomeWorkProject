@@ -1,7 +1,6 @@
 package ua.chernonog.springcourse.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.repositories.BooksRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -74,5 +72,8 @@ public class BooksService {
             ).getContent();
         }
         return booksRepository.findAll(Sort.by("yearOfProduction"));
+    }
+    public List<Book> findBookByLike(String str){
+        return booksRepository.findAllByTitleLike(str);
     }
 }

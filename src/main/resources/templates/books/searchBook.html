@@ -11,10 +11,16 @@
 <form th:action="@{/books/search}" th:method="GET">
   <div class="field">
   <label class="not" for="search-input">Введите поисковый запрос:</label>
-  <input th:type="text"  id="search-input">
+  <input th:type="text" th:name="search" id="search-input">
   <button class="tap" type="submit">Искать!</button>
   </div>
-</form>
+  </form>
+
+  <div class="field" th:if="${books.size()>0}">
+    <div th:each="book:${books}" th:object="${book}">
+      <p th:text="${book.getTitle()}"></p>
+    </div>
+  </div>
 </div>
 </body>
 </html>
