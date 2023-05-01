@@ -2,25 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Список людей</title>
-  <link rel="stylesheet" th:href="@{/css/main.css}" href="">
+    <meta charset="UTF-8">
+    <title>Список людей</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="">
 </head>
 <body>
 <div class="content">
-<form th:action="@{/books/search}" th:method="GET">
-  <div class="field">
-  <label class="not" for="search-input">Введите поисковый запрос:</label>
-  <input th:type="text" th:name="search" id="search-input">
-  <button class="tap" type="submit">Искать!</button>
-  </div>
-  </form>
+    <form th:action="@{/books/search}" th:method="GET">
+        <div class="field">
+            <label class="not" for="search-input">Введите поисковый запрос:</label>
+            <input th:type="text" th:name="search" id="search-input">
+            <button class="tap" type="submit">Искать!</button>
+        </div>
+    </form>
 
-<!--  <div class="field" th:if="${books.size()>0}">-->
-    <div th:each="book:${books}" th:object="${book}">
-      <p th:text="${book.getTitle()}"></p>
+    <div class="field" th:if="${books.size()>0}" >
+        <div class="listbook" th:each="book:${books}" th:object="${book}" >
+            <p th:text="${book.getTitle()}"></p>
+
+        </div>
     </div>
-<!--  </div>-->
+    <div th:unless="${books.size()>0}">
+        <p>Книга не найдена!</p>
+    </div>
 </div>
 </body>
 </html>

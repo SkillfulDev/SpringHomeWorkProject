@@ -91,6 +91,7 @@ public class BooksController {
     @GetMapping("/search")
     public String searchBookPage(@RequestParam(value = "search",required = false) String search, Model model){
         model.addAttribute("books",booksService.findBookByLike(search));
+        model.addAttribute("person", booksService.find(id))
 
         return "books/searchBook";
     }
