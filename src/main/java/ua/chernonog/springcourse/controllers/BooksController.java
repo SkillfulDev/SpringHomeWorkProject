@@ -89,14 +89,12 @@ public class BooksController {
     }
 
     @GetMapping("/search")
-    public String searchBookPage(@RequestParam(value = "hiddenId", required = false) String value, @RequestParam(value = "search", required = false) String search, Model model) {
-        model.addAttribute("books", booksService.findBookByLike(search));
-        System.out.println(value);
-        if(value!=null) {
-           int id = Integer.parseInt(value);
-           System.out.println(id);
-           model.addAttribute("person", booksService.find(id));
-       }
+    public String searchBookPage(@RequestParam(value = "search", required = false) String search, Model model) {
+      List<Book> books =booksService.findBookByLike(search);
+      model.addAttribute("book" ,books.get(0));
+        model.addAttribute("person", booksService.find(books.get(0).getId()));
+Person person1 =booksService.find(books.get(0).getId());
+        System.out.println(person1.getId());
         return "books/searchBook";
     }
 
