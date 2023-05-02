@@ -2,30 +2,40 @@ package ua.chernonog.springcourse.models;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 @Component
 @Entity
-@Table(name="book")
+@Table(name = "book")
 public class Book {
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="title")
+    @Column(name = "title")
     private String title;
 
-    @Column(name="author")
+    @Column(name = "author")
     private String author;
 
-    @Column(name="year_of_production")
+    @Column(name = "year_of_production")
     private int yearOfProduction;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="id_person",referencedColumnName = "id")
+    @JoinColumn(name = "id_person", referencedColumnName = "id")
     private Person owner;
 
-    public Book (){
+    @Column(name = "date")
+    private Date date;
+
+    @Transient
+    private boolean isOutDated;
+
+    public Book() {
 
     }
 
@@ -33,6 +43,15 @@ public class Book {
         this.title = title;
         this.author = author;
         this.yearOfProduction = yearOfProduction;
+
+    }
+
+    public boolean isOutDated() {
+        return isOutDated;
+    }
+
+    public void setOutDated(boolean outDated) {
+        isOutDated = outDated;
     }
 
     public int getId() {
@@ -73,6 +92,14 @@ public class Book {
 
     public void setOwner(Person owner) {
         this.owner = owner;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override

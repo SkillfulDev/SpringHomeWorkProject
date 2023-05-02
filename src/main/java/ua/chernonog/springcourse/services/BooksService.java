@@ -9,7 +9,11 @@ import ua.chernonog.springcourse.models.Book;
 import ua.chernonog.springcourse.models.Person;
 import ua.chernonog.springcourse.repositories.BooksRepository;
 
+import java.time.Duration;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional(readOnly = true)
@@ -58,6 +62,8 @@ public class BooksService {
 
     @Transactional
     public void addPersonToBook(int id, Person person) {
+        Book book = booksRepository.findById(id).orElse(null);
+        book.setDate(new Date());
         booksRepository.addPersonToBook(person, id);
     }
 
@@ -68,12 +74,29 @@ public class BooksService {
 
     public List<Book> pageMethod(Integer page, Integer itemsPerPage) {
         if (page != null) {
-            return booksRepository.findAll(PageRequest.of(page, itemsPerPage,Sort.by("yearOfProduction"))
+            return booksRepository.findAll(PageRequest.of(page, itemsPerPage, Sort.by("yearOfProduction"))
             ).getContent();
         }
         return booksRepository.findAll(Sort.by("yearOfProduction"));
     }
-    public List<Book> findBookByLike(String str){
+
+    public List<Book> findBookByLike(String str) {
         return booksRepository.findAllByTitleContaining(str);
+    }
+
+    public boolean isOutDated(int id, Person person) {
+        List<Book> books = booksRepository.findAllByOwner(person);
+        Date end = new Date();
+        for (Book book : books) {
+            Date start = book.getDate();
+            long duration = end.getTime() - start.getTime();
+            long diffDays = TimeUnit.MICROSECONDS.toDays(duration);
+            if (diffDays > 10) {
+                return true;
+
+            }
+        }
+
+        return false;
     }
 }
