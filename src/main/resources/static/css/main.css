@@ -235,5 +235,8 @@ body {
 .content .book {
   margin-bottom: 15px;
 }
+.content .bookColor {
+  color: red;
+}
 
 /*# sourceMappingURL=main.css.map */

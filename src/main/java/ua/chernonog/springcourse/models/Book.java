@@ -46,8 +46,11 @@ public class Book {
 
     }
 
-    public boolean isOutDated() {
+    public boolean getIsOutDated() {
         return isOutDated;
+    }
+    public void setIsOutDate(boolean value) {
+        this.isOutDated=value;
     }
 
     public void setOutDated(boolean outDated) {
