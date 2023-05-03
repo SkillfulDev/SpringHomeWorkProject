@@ -84,20 +84,5 @@ public class BooksService {
         return booksRepository.findAllByTitleContaining(str);
     }
 
-    public void isOutDated(Person person) {
-        List<Book> books = booksRepository.findAllByOwner(person);
-        Date end = new Date();
-        for (Book book : books) {
-            Date start = book.getDate();
-            long duration = end.getTime() - start.getTime();
-            long diffDays = TimeUnit.MICROSECONDS.toDays(duration);
-            if (diffDays > 10) {
-                book.setOutDated(true);
 
-            } else {
-                book.setOutDated(false);
-            }
-        }
-
-    }
 }
