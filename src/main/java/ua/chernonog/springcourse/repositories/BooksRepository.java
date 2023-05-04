@@ -30,9 +30,6 @@ public interface BooksRepository extends JpaRepository<Book, Integer> {
     @Query(value = "update Book  set owner=null where id=:id")
     public void removePersonFromBoor(@Param("id") int id);
 
-    Page<Book> findAll(Pageable page);
-
-    List<Book> findAll(Sort var);
 
     List<Book> findAllByTitleContaining(String str);
 }

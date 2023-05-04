@@ -51,7 +51,6 @@ public class PeopleController {
     public String editPage(@PathVariable("id") int id, Model model) {
 
         model.addAttribute("person", peopleService.getPersonById(id));
-        booksService.isOutDated(peopleService.getPersonById(id));
         model.addAttribute("books", booksService.findByOwner(peopleService.getPersonById(id)));
         return "people/showPerson";
     }
